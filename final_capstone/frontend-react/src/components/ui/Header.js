@@ -6,53 +6,46 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 
+import './header.css'
 import Logo from '../../images/BlueMoon.jpg'
+import Navigation from './Navigation';
+import Search from './Search';
 
 const Header = () => {
-    const userContext = useContext(UserContext);
-    const currentUser = userContext.currentUser;
-
-
-	return (
+	const pages = [
+		{
+		  page_id: 1,
+		  link: '/',
+		  name: 'Home',
+		  active: true,
+		},
+		{
+		  page_id: 2,
+		  link: '/about',
+		  name: 'About',
+		  active: false,
+		},
+		{
+		  page_id: 3,
+		  link: '/contact',
+		  name: 'Contact',
+		  active: false,
+		},
+	  ];
+    
+	  return (
 		<>
-			<header>	
-				{currentUser && currentUser.isAuthenticated &&
-             	  <div id="loggedin">You are currently logged in as {currentUser.username} <br/></div>
-				}			
-				<Nav>
-					<Navbar bg="light" variant="light" expand="lg">
-						<Container>
-							<Navbar.Brand>
-								<img src={Logo} alt="Blue Moon Logo"/>
-							</Navbar.Brand>
-							
-							<Navbar.Toggle aria-controls="basic-navbar-nav" />
-							<Navbar.Collapse id="basic-navbar-nav">
-								<Nav className="justify-content-center">
-									<LinkContainer to="/">
-										<Nav.Link>Home</Nav.Link>
-									</LinkContainer>
-									<LinkContainer to="/Login">
-										<Nav.Link>Login/Logout</Nav.Link>
-									</LinkContainer>
-									{(currentUser) && currentUser.isAuthenticated &&
-										<NavDropdown title="Options" id="basic-nav-dropdown">
-											<LinkContainer to="/Option1">
-												<NavDropdown.Item>Option 1</NavDropdown.Item>
-											</LinkContainer>
-											<LinkContainer to="/Option2">
-												<NavDropdown.Item>Option 2</NavDropdown.Item>
-											</LinkContainer>
-										</NavDropdown>
-									}
-								</Nav>
-							</Navbar.Collapse>
-						</Container>
-					</Navbar>
-				</Nav>
-			</header>
+		  <header>
+			<a href="/" className="logo">
+			  BlueMoon Cinema
+			</a>
+			<ul className="nav">
+				<Navigation pages={pages} />
+			</ul>
+			<Search />
+		  </header>
 		</>
-	);
+	  );
 };
 
 export default Header;
