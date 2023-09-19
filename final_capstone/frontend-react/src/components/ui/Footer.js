@@ -52,10 +52,10 @@ const Footer = () => {
             <div className="col-lg-5 col-md-12">
               <div className="footer-info">
                 <a href="/" className="logo d-flex align-items-center">
-                  <span>BlueMoon Cinema</span>
+                  <span>Smalltown Cinema</span>
                 </a>
                 <p>
-                  Welcome to BlueMoon Cinema, where every frame tells a story. Our mission is to bring you the magic of cinema, from timeless classics to the latest blockbusters. Join us in celebrating the art of filmmaking and immerse yourself in unforgettable cinematic experiences. Grab your popcorn, find your seat, and let the show begin!
+                  Welcome to Smalltown Cinema, where every frame tells a story. Our mission is to bring you the magic of cinema, from timeless classics to the latest blockbusters. Join us in celebrating the art of filmmaking and immerse yourself in unforgettable cinematic experiences. Grab your popcorn, find your seat, and let the show begin!
                 </p>
               </div>
               <div className="social-links mt-3">
@@ -101,7 +101,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copywright">
-        <p>&copy; Copyright {new Date().getFullYear()} BlueMoon Cinema. All Rights Reserved.</p>
+        <p>&copy; Copyright {new Date().getFullYear()} Smalltown Cinema. All Rights Reserved.</p>
       </div>
       <div className="credits">
         <p> Developed based on{' '}

@@ -10,6 +10,7 @@ import './header.css'
 import Logo from '../../images/BlueMoon.jpg'
 import Navigation from './Navigation';
 import Search from './Search';
+import Button from './Button';
 
 const Header = () => {
 	const pages = [
@@ -37,12 +38,16 @@ const Header = () => {
 		<>
 		  <header>
 			<a href="/" className="logo">
-			  BlueMoon Cinema
+			  Smalltown Cinema
 			</a>
 			<ul className="nav">
 				<Navigation pages={pages} />
 			</ul>
 			<Search />
+			<Button
+				icon={<ion-icon name="log-in-outline"></ion-icon>} 
+				name='Sign In'
+			/>
 		  </header>
 		</>
 	  );
