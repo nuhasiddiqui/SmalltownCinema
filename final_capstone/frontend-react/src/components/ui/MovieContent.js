@@ -1,27 +1,20 @@
 import React from 'react';
 import './movieContent.css';
-import titleImg from '../../images/transformer-title.png'
 import Button from './Button';
 
-const MovieContent = () => {
+const MovieContent = ({movie}) => {
   return (
-    <div className="content active">
-        <img src={titleImg} alt="Movie Title" className="movie-title"/>
+    <div className={`content ${movie.active ? 'active' : undefined}`}>
+        <img src={movie.titleImg} alt="Movie Title" className="movie-title"/>
         <h4>
-            <span>Year</span>
+            <span>{movie.year}</span>
             <span>
-                <i>age</i>
+                <i>{movie.age}</i>
             </span>
-            <span>length</span>
-            <span>category</span>
+            <span>{movie.length}</span>
+            <span>{movie.category}</span>
         </h4>
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed ut quam non ex volutpat fringilla. In eget efficitur nulla. 
-        Nam vel justo justo. Nulla auctor viverra eros, a elementum nisi lacinia nec. 
-        Aliquam vestibulum vestibulum quam, nec posuere turpis hendrerit in. 
-        Sed vitae justo et lorem vehicula volutpat.
-        </p>
+        <p>{movie.description}</p>
         <div className="button">
           <Button 
             icon={<ion-icon name="bookmark-outline"></ion-icon>} 

@@ -1,4 +1,7 @@
-// import 'bootstrap/dist/css/bootstrap.min.css'
+// import bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+// import Swiper styles
+import 'swiper/css';
 
 import { UserProvider } from './context/UserContext';
 import ErrorBoundary from './ErrorBoundary';
@@ -7,13 +10,14 @@ import Home from './pages/Home/Home';
 import Option1 from './pages/Options/Option1';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Header from './components/ui/Header';
+import Banner from './components/ui/Banner';
 import Option2 from './pages/Options/Option2';
 
 
 const MyApp = () => {  
 
   return (
-    
     <div className="wrapper">
       <ErrorBoundary fallback={<p>Something went wrong</p>}>
         <UserProvider>
