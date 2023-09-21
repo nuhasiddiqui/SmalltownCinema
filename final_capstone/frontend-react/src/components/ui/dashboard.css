@@ -1,0 +1,21 @@
+.dashboard .filters {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.dashboard .filters li {
+    color: #ffffff;
+    padding: 10px 25px;
+    background: #191919;
+    transition: 0.3s;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.dashboard .filters li:hover,
+.dashboard .filters li.active {
+    background: var(--primary);
+}
