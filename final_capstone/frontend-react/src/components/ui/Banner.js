@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getMovies } from '../../api/MovieApi'; // Import the getMovies function from your movie API
 
 import './banner.css'
 import MovieContent from './MovieContent';
@@ -11,25 +12,21 @@ const Banner = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3000/data/movieData.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setMovies(data); // Update the movies state with fetched data
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+          try {
+            const movieData = await getMovies(); // Use the getMovies function to fetch movies
+            setMovies(movieData); // Update the movies state with fetched data
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
         };
-
+    
         fetchData(); // Call the fetchData function when the component mounts
-    }, []); // The empty dependency array ensures this effect runs only once
+    }, []);
 
     const handleSlideChange = id => {
         const newMovies = movies.map(movie=>{
             movie.active = false;
-            if(movie._id===id){
+            if(movie.movieId===id){
                 movie.active = true;
             }
             return movie;

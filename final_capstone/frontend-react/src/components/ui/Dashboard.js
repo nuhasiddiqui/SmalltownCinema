@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+
+import { getMovies } from '../../api/MovieApi'; // Import the getMovies function from your movie API
 import './dashboard.css'
 import Card from './Card'
 
@@ -6,32 +8,32 @@ import Card from './Card'
 const Dashboard = () => {
     const filterList = [
         {
-            _id: 1,
+            filterId: 1,
             name: 'All',
             active: true,
         },
         {
-            _id: 2,
+            filterId: 2,
             name: 'Romance',
             active: false,
         },
         {
-            _id: 3,
+            filterId: 3,
             name: 'Action',
             active: false,
         },
         {
-            _id: 4,
+            filterId: 4,
             name: 'Thriller',
             active: false,
         },
         {
-            _id: 5,
+            filterId: 5,
             name: 'Horror',
             active: false,
         },
         {
-            _id: 6,
+            filterId: 6,
             name: 'Adventure',
             active: false,
         },
@@ -41,22 +43,19 @@ const Dashboard = () => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [filters, setFilters] = useState(filterList)
 
+    
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3000/data/movieData.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setMovies(data); // Update the movies state with fetched data
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+          try {
+            const movieData = await getMovies(); // Use the getMovies function to fetch movies
+            setMovies(movieData); // Update the movies state with fetched data
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
         };
-
+    
         fetchData(); // Call the fetchData function when the component mounts
-    }, []); // The empty dependency array ensures this effect runs only once
+    }, []);
 
     useEffect(() => {
         setFilteredMovies(movies);
@@ -89,7 +88,7 @@ const Dashboard = () => {
             <div className="row">
                 <ul className="filters">
                     {filters.map(filter => (
-                        <li key={filter._id} 
+                        <li key={filter.filterId} 
                         className={`${filter.active ? 'active' : undefined}`}
                         onClick={()=>{handleFilterMovies(filter.name)}}
                         >
@@ -100,7 +99,7 @@ const Dashboard = () => {
             </div>
             <div className="row mt-5">
             {filteredMovies && filteredMovies.length > 0 && filteredMovies.map(filteredMovie => (
-                <Card key={filteredMovie._id} filteredMovie={filteredMovie} />
+                <Card key={filteredMovie.movieId} filteredMovie={filteredMovie} />
             ))}
             </div>
         </div>

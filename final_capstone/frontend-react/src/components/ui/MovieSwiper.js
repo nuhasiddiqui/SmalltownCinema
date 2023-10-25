@@ -35,11 +35,11 @@ const MovieSwiper = ({slides, slideChange}) => {
       className="movieSwiper"
     >
       {slides.map((slide) => (
-        <SwiperSlide key={slide._id}>
+        <SwiperSlide key={slide.movieId}>
           <img 
             src={slide.previewImg} 
             alt="Preview Image" 
-            onClick={()=>slideChange(slide._id)} 
+            onClick={()=>slideChange(slide.movieId)} 
           />
         </SwiperSlide>
       ))}
